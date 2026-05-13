@@ -370,7 +370,7 @@ export default function App() {
                   <CartesianGrid strokeDasharray="3 3" stroke={BORDER} vertical={false} />
                   <XAxis dataKey="label" tick={{ fill: MUTED, fontSize: 9 }} axisLine={false} tickLine={false} />
                   <YAxis tick={{ fill: MUTED, fontSize: 9 }} axisLine={false} tickLine={false} />
-                  <Tooltip contentStyle={{ background: "#1a2235", border: `1px solid ${BORDER}`, borderRadius: 8, fontSize: 12 }} />
+                  <Tooltip contentStyle={{ background: "#1a2235", border: `1px solid ${BORDER}`, borderRadius: 8, fontSize: 12 }} cursor={{ fill: 'transparent' }} />
                   <Bar dataKey="eng" name="Engagements" fill={IG_PINK} radius={[3,3,0,0]} cursor={false} />
                 </BarChart>
               </ResponsiveContainer>
