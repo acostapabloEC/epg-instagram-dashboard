@@ -1,9 +1,8 @@
-// All data flows through useInstagramData(). Swap the mock return object for live Graph API + GA4 fetches
-// when access lands. No other component changes required.
-
 import { useState, useEffect } from "react";
+import igData from "./instagram-data.json";
 import {
   PieChart, Pie, Cell,
+  AreaChart, Area,
   XAxis, YAxis, CartesianGrid, Tooltip,
   ResponsiveContainer, BarChart, Bar,
 } from "recharts";
@@ -34,57 +33,26 @@ function useInstagramData() {
       username: "franklarosa.elite",
       followers_count: 297712,
       media_count: 477,
-      profile_picture_url: null,
     },
-    accountInsights: {
-      reach:            { last7d: null, last28d: null, last90d: null },
-      profileViews:     { last7d: null, last28d: null, last90d: null },
-      followerCount:    297712,
-      externalLinkTaps: { last90d: 51 },
-    },
-    topMedia: [
-      {
-        id: "1",
-        caption: "If you cannot spend an entire weekend with just your spouse and be completely content, you might want to think about that.",
-        media_type: "REEL", permalink: "#",
-        plays: 148899, reach: 141350, total_interactions: 7792,
-        saves: null, shares: null, timestamp: "2026-04-05",
-      },
-      {
-        id: "2",
-        caption: "If a real Ferrari enthusiast could only pick one car, it would not be the fastest one. It would be the one that speaks to their soul.",
-        media_type: "REEL", permalink: "#",
-        plays: 75984, reach: 72000, total_interactions: 1799,
-        saves: null, shares: null, timestamp: "2026-03-27",
-      },
-      {
-        id: "3",
-        caption: "Success isn't defined by titles, awards, or headlines. It's defined by what you do when no one is watching.",
-        media_type: "REEL", permalink: "#",
-        plays: 14544, reach: 14000, total_interactions: 1165,
-        saves: null, shares: null, timestamp: "2026-02-10",
-      },
-      {
-        id: "4",
-        caption: "Failure isn't the opposite of success. It's the tuition. Every miss, every setback is a lesson you paid for.",
-        media_type: "REEL", permalink: "#",
-        plays: 14121, reach: 13500, total_interactions: 1106,
-        saves: null, shares: null, timestamp: "2026-02-13",
-      },
-      {
-        id: "5",
-        caption: "Someone asked me which Ferrari I would keep if I had to get rid of everything else. Didn't even have to think about it.",
-        media_type: "REEL", permalink: "#",
-        plays: 23114, reach: 22000, total_interactions: 658,
-        saves: null, shares: null, timestamp: "2026-03-30",
-      },
-    ],
+    topMedia: igData.topMedia.map((p, i) => ({
+      id: String(i + 1),
+      caption: p.caption,
+      media_type: p.type.toUpperCase(),
+      permalink: "#",
+      plays: p.views,
+      reach: p.reach,
+      total_interactions: p.engagement,
+      shares: p.shares,
+      saves: p.saves,
+      timestamp: p.date,
+    })),
+    monthly: igData.monthly,
     pillarMix: { resilience: 40, marriage: 25, ceo: 20, health: 15 },
     derived: {
       skipRate:                  72.8,
-      medianReelViews:           839,
+      medianReelViews:           igData.derived.medianReelViews,
       bioLinkCTR:                0.054,
-      avgShareRate:              2.58,
+      avgShareRate:              igData.derived.avgShareRate,
       profileVisitsPer100KReach: 9400,
       qualifiedDMInbound:        0,
       ecpFollowers:              946,
@@ -231,7 +199,15 @@ function ScorecardTile({ label, current, d30, d60, d90, status, accentColor }) {
 
 // ─── App ─────────────────────────────────────────────────────────────────────
 export default function App() {
-  const { profile, derived, topMedia, pillarMix } = useInstagramData();
+  const { profile, derived, topMedia, monthly, pillarMix } = useInstagramData();
+
+  const monthlyChart = monthly.map(m => ({
+    month: m.month.slice(5), // "01" through "12"
+    year:  m.month.slice(0,4),
+    label: new Date(m.month+'-01').toLocaleDateString('en-US',{month:'short',year:'2-digit'}),
+    eng:   m.eng,
+    views: Math.round(m.views / 1000),
+  }));
 
   const pillarData = [
     { name: "Resilience", value: pillarMix.resilience, color: AMBER    },
@@ -303,7 +279,7 @@ export default function App() {
           <div style={{ width: 1, height: 34, background: BORDER }} />
           <div style={{ textAlign: "right" }}>
             <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 10, color: MUTED }}>Last refreshed</div>
-            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: "#f0f6fc" }}>May 3, 2026</div>
+            <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 11, color: "#f0f6fc" }}>{igData.updatedAt}</div>
           </div>
           <Clock />
         </div>
@@ -377,12 +353,55 @@ export default function App() {
           ))}
         </div>
 
+        {/* ── MONTHLY TREND ── */}
+        <div style={{ background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: 12, padding: "24px 28px", marginBottom: 28 }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
+            <div>
+              <div style={{ fontSize: 15, fontWeight: 600, marginBottom: 4 }}>Monthly Performance — Jan 2025 to May 2026</div>
+              <div style={{ fontSize: 11, color: MUTED }}>Engagements & Views · Hootsuite export · Daily aggregated values</div>
+            </div>
+            <StatusBadge label="Manual" />
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 28 }}>
+            <div>
+              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: 2, textTransform: "uppercase", color: IG_PINK, marginBottom: 10 }}>Engagements / Month</div>
+              <ResponsiveContainer width="100%" height={180}>
+                <BarChart data={monthlyChart} margin={{ top: 4, right: 4, left: -20, bottom: 0 }}>
+                  <CartesianGrid strokeDasharray="3 3" stroke={BORDER} vertical={false} />
+                  <XAxis dataKey="label" tick={{ fill: MUTED, fontSize: 9 }} axisLine={false} tickLine={false} />
+                  <YAxis tick={{ fill: MUTED, fontSize: 9 }} axisLine={false} tickLine={false} />
+                  <Tooltip contentStyle={{ background: "#1a2235", border: `1px solid ${BORDER}`, borderRadius: 8, fontSize: 12 }} />
+                  <Bar dataKey="eng" name="Engagements" fill={IG_PINK} radius={[3,3,0,0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+            <div>
+              <div style={{ fontFamily: "'DM Mono', monospace", fontSize: 9, letterSpacing: 2, textTransform: "uppercase", color: PURPLE, marginBottom: 10 }}>Views / Month (K)</div>
+              <ResponsiveContainer width="100%" height={180}>
+                <AreaChart data={monthlyChart} margin={{ top: 4, right: 4, left: -20, bottom: 0 }}>
+                  <defs>
+                    <linearGradient id="viewGrad" x1="0" y1="0" x2="0" y2="1">
+                      <stop offset="5%" stopColor={PURPLE} stopOpacity={0.3} />
+                      <stop offset="95%" stopColor={PURPLE} stopOpacity={0} />
+                    </linearGradient>
+                  </defs>
+                  <CartesianGrid strokeDasharray="3 3" stroke={BORDER} />
+                  <XAxis dataKey="label" tick={{ fill: MUTED, fontSize: 9 }} axisLine={false} tickLine={false} />
+                  <YAxis tick={{ fill: MUTED, fontSize: 9 }} axisLine={false} tickLine={false} tickFormatter={v => `${v}K`} />
+                  <Tooltip contentStyle={{ background: "#1a2235", border: `1px solid ${BORDER}`, borderRadius: 8, fontSize: 12 }} formatter={v => [`${v}K`, "Views"]} />
+                  <Area type="monotone" dataKey="views" name="Views (K)" stroke={PURPLE} strokeWidth={2} fill="url(#viewGrad)" dot={false} />
+                </AreaChart>
+              </ResponsiveContainer>
+            </div>
+          </div>
+        </div>
+
         {/* ── TOP REELS ── */}
         <div style={{ background: SURFACE, border: `1px solid ${BORDER}`, borderRadius: 12, padding: "24px 28px", marginBottom: 28 }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 20 }}>
             <div>
-              <div style={{ fontSize: 15, fontWeight: 600, marginBottom: 4 }}>Top Reels — Last 30 Days</div>
-              <div style={{ fontSize: 11, color: MUTED }}>Ranked by total interactions · Historical Hootsuite export</div>
+              <div style={{ fontSize: 15, fontWeight: 600, marginBottom: 4 }}>Top Reels — All Time</div>
+              <div style={{ fontSize: 11, color: MUTED }}>Ranked by total interactions · Hootsuite export · Jan 2025 – May 2026</div>
             </div>
             <StatusBadge label="API pending — Graph API" />
           </div>
@@ -448,7 +467,7 @@ export default function App() {
           </div>
 
           <div style={{ marginTop: 16, padding: "10px 14px", background: AMBER_DIM, border: `1px solid rgba(245,158,11,0.2)`, borderRadius: 8, fontSize: 11, color: AMBER, lineHeight: 1.6 }}>
-            Data above is from historical Hootsuite export. Live Graph API will replace with real-time last-30-day Reel performance once Brian provisions access (weekend).
+Data sourced from Hootsuite export (Jan 2025 – May 12, 2026). Live Graph API will replace with real-time performance once Brian provisions access.
           </div>
         </div>
 

@@ -1,0 +1,213 @@
+{
+  "updatedAt": "2026-05-12",
+  "topMedia": [
+    {
+      "date": "2025-01-22",
+      "type": "Reel",
+      "caption": "The real battle isn’t against your competitors or circumstances- it’s against your own doubts, excuses, and limits.\r  Once you push past the",
+      "likes": 22367,
+      "comments": 242,
+      "shares": 9964,
+      "saves": 4715,
+      "views": 441351,
+      "reach": 342022,
+      "engagement": 37288,
+      "engRate": 0
+    },
+    {
+      "date": "2026-04-05",
+      "type": "Reel",
+      "caption": "If you cannot spend an entire weekend with just your spouse and be completely content, you might want to think about that.  My wife and I ca",
+      "likes": 8287,
+      "comments": 247,
+      "shares": 8257,
+      "saves": 1706,
+      "views": 302083,
+      "reach": 231501,
+      "engagement": 18844,
+      "engRate": 0
+    },
+    {
+      "date": "2025-06-20",
+      "type": "Reel",
+      "caption": "Everybody wants success - until it’s time to put in the work.  At Elite, we don’t just talk leadership - we live it. Behind every win is gri",
+      "likes": 5923,
+      "comments": 39,
+      "shares": 5237,
+      "saves": 1832,
+      "views": 155990,
+      "reach": 121762,
+      "engagement": 13048,
+      "engRate": 0
+    },
+    {
+      "date": "2025-01-21",
+      "type": "Reel",
+      "caption": "Your dreams are closer than you may think. 👏  Break down your vision into a plan, back it with relentless action, and watch it transform in",
+      "likes": 3416,
+      "comments": 73,
+      "shares": 1971,
+      "saves": 925,
+      "views": 136502,
+      "reach": 99994,
+      "engagement": 6385,
+      "engRate": 0
+    },
+    {
+      "date": "2025-01-06",
+      "type": "Reel",
+      "caption": "Overcoming laziness doesn’t come from giant leaps- it happens by finding purpose, embracing small steps, and working with focus. \r  Approach",
+      "likes": 1693,
+      "comments": 57,
+      "shares": 1200,
+      "saves": 1187,
+      "views": 29652,
+      "reach": 23341,
+      "engagement": 4137,
+      "engRate": 0
+    }
+  ],
+  "monthly": [
+    {
+      "month": "2025-01",
+      "eng": 57246,
+      "views": 874599,
+      "likes": 32875,
+      "shares": 14925,
+      "saves": 9023
+    },
+    {
+      "month": "2025-02",
+      "eng": 795,
+      "views": 60613,
+      "likes": 549,
+      "shares": 83,
+      "saves": 134
+    },
+    {
+      "month": "2025-03",
+      "eng": 741,
+      "views": 124332,
+      "likes": 548,
+      "shares": 88,
+      "saves": 82
+    },
+    {
+      "month": "2025-04",
+      "eng": 1571,
+      "views": 119365,
+      "likes": 996,
+      "shares": 209,
+      "saves": 343
+    },
+    {
+      "month": "2025-05",
+      "eng": 849,
+      "views": 109152,
+      "likes": 632,
+      "shares": 70,
+      "saves": 130
+    },
+    {
+      "month": "2025-06",
+      "eng": 14296,
+      "views": 282426,
+      "likes": 6655,
+      "shares": 5431,
+      "saves": 2116
+    },
+    {
+      "month": "2025-07",
+      "eng": 1403,
+      "views": 114807,
+      "likes": 748,
+      "shares": 396,
+      "saves": 245
+    },
+    {
+      "month": "2025-08",
+      "eng": 498,
+      "views": 99226,
+      "likes": 329,
+      "shares": 57,
+      "saves": 73
+    },
+    {
+      "month": "2025-09",
+      "eng": 442,
+      "views": 98593,
+      "likes": 344,
+      "shares": 23,
+      "saves": 53
+    },
+    {
+      "month": "2025-10",
+      "eng": 508,
+      "views": 118186,
+      "likes": 405,
+      "shares": 22,
+      "saves": 52
+    },
+    {
+      "month": "2025-11",
+      "eng": 236,
+      "views": 89540,
+      "likes": 168,
+      "shares": 15,
+      "saves": 35
+    },
+    {
+      "month": "2025-12",
+      "eng": 330,
+      "views": 136428,
+      "likes": 257,
+      "shares": 8,
+      "saves": 40
+    },
+    {
+      "month": "2026-01",
+      "eng": 967,
+      "views": 64289,
+      "likes": 607,
+      "shares": 143,
+      "saves": 134
+    },
+    {
+      "month": "2026-02",
+      "eng": 4717,
+      "views": 125392,
+      "likes": 2520,
+      "shares": 1203,
+      "saves": 776
+    },
+    {
+      "month": "2026-03",
+      "eng": 4580,
+      "views": 243648,
+      "likes": 2662,
+      "shares": 1078,
+      "saves": 573
+    },
+    {
+      "month": "2026-04",
+      "eng": 25083,
+      "views": 570483,
+      "likes": 11987,
+      "shares": 9615,
+      "saves": 2551
+    },
+    {
+      "month": "2026-05",
+      "eng": 103,
+      "views": 13030,
+      "likes": 73,
+      "shares": 4,
+      "saves": 21
+    }
+  ],
+  "derived": {
+    "medianReelViews": 778,
+    "avgShareRate": 0.22,
+    "recentReelsCount": 224
+  }
+}
