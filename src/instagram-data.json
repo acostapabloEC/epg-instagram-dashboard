@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-25",
+  "updatedAt": "2026-06-29",
   "topMedia": [
     {
       "date": "2025-01-22",
@@ -18,14 +18,14 @@
       "date": "2026-04-05",
       "type": "Reel",
       "caption": "If you cannot spend an entire weekend with just your spouse and be completely content, you might want to think about that.  My wife and I ca",
-      "likes": 8287,
-      "comments": 247,
-      "shares": 8257,
-      "saves": 1706,
-      "views": 302083,
-      "reach": 231501,
-      "engagement": 18844,
-      "engRate": 0
+      "likes": 9594,
+      "comments": 282,
+      "shares": 9513,
+      "saves": 2053,
+      "views": 350731,
+      "reach": 268665,
+      "engagement": 21890,
+      "engRate": 8.15
     },
     {
       "date": "2025-06-20",
@@ -41,9 +41,22 @@
       "engRate": 0
     },
     {
+      "date": "2026-04-19",
+      "type": "Reel",
+      "caption": "People want to argue with me about this. So let me defend my pick. If I could only keep one Ferrari, it would be the 458. Not the 296. Not the 488. The 458.",
+      "likes": 5195,
+      "comments": 219,
+      "shares": 1405,
+      "saves": 817,
+      "views": 316997,
+      "reach": 229697,
+      "engagement": 7729,
+      "engRate": 3.36
+    },
+    {
       "date": "2025-01-21",
       "type": "Reel",
-      "caption": "Your dreams are closer than you may think. 👏  Break down your vision into a plan, back it with relentless action, and watch it transform in",
+      "caption": "Your dreams are closer than you may think. Break down your vision into a plan, back it with relentless action, and watch it transform in",
       "likes": 3416,
       "comments": 73,
       "shares": 1971,
@@ -51,19 +64,6 @@
       "views": 136502,
       "reach": 99994,
       "engagement": 6385,
-      "engRate": 0
-    },
-    {
-      "date": "2025-01-06",
-      "type": "Reel",
-      "caption": "Overcoming laziness doesn’t come from giant leaps- it happens by finding purpose, embracing small steps, and working with focus. \r  Approach",
-      "likes": 1693,
-      "comments": 57,
-      "shares": 1200,
-      "saves": 1187,
-      "views": 29652,
-      "reach": 23341,
-      "engagement": 4137,
       "engRate": 0
     }
   ],
@@ -190,19 +190,27 @@
     },
     {
       "month": "2026-04",
-      "eng": 27244,
-      "views": 628833,
-      "likes": 13200,
-      "shares": 10600,
-      "saves": 2900
+      "eng": 31887,
+      "views": 770348,
+      "likes": 15903,
+      "shares": 11460,
+      "saves": 3327
     },
     {
       "month": "2026-05",
-      "eng": 281,
-      "views": 30315,
-      "likes": 198,
-      "shares": 42,
-      "saves": 35
+      "eng": 364,
+      "views": 41604,
+      "likes": 256,
+      "shares": 25,
+      "saves": 58
+    },
+    {
+      "month": "2026-06",
+      "eng": 2572,
+      "views": 134747,
+      "likes": 1761,
+      "shares": 349,
+      "saves": 284
     }
   ],
   "derived": {
