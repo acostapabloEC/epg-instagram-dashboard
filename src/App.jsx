@@ -221,8 +221,17 @@ export default function App() {
   const viewsProg   = Math.min(100, (derived.medianReelViews / 2500) * 100);
   const ctrProg     = Math.min(100, (derived.bioLinkCTR / 2.0) * 100);
 
+  // Net follower growth is real data (Hootsuite Analytics API, added 2026-07-20) —
+  // followers_count snapshot delta for the current month, updated weekly by the
+  // instagram_report.mjs automation. Falls back to the last known figure if a
+  // month entry hasn't been backfilled with newFollowers yet.
+  const latestMonth = monthly[monthly.length - 1];
+  const followerGrowthDisplay = latestMonth?.newFollowers != null
+    ? `${latestMonth.newFollowers >= 0 ? "+" : ""}${latestMonth.newFollowers.toLocaleString()}`
+    : "+470";
+
   const scorecard = [
-    { label: "Net Follower Growth / Month", current: "+470",  d30: "+1,500", d60: "+2,500", d90: "+3,000+", status: "Live",         accentColor: GREEN  },
+    { label: "Net Follower Growth / Month", current: followerGrowthDisplay, d30: "+1,500", d60: "+2,500", d90: "+3,000+", status: "Live",         accentColor: GREEN  },
     { label: "Avg Share Rate",              current: "2.58%", d30: "3.0%",   d60: "3.3%",   d90: "3.5%",    status: "API pending",  accentColor: AMBER  },
     { label: "Profile Visits / 100K Reach", current: "9,400", d30: "12,000", d60: "14,000", d90: "15,000+", status: "Live",         accentColor: BLUE   },
     { label: "External Link Taps (90d)",    current: "51",    d30: "500",    d60: "1,200",  d90: "2,000+",  status: "Live",         accentColor: IG_PINK },
