@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-13",
+  "updatedAt": "2026-09-20",
   "topMedia": [
     {
       "date": "2025-01-22",
@@ -232,12 +232,12 @@
     },
     {
       "month": "2026-09",
-      "eng": 879,
-      "views": 104075,
-      "likes": 671,
-      "shares": 42,
-      "saves": 90,
-      "newFollowers": -662
+      "eng": 1334,
+      "views": 146700,
+      "likes": 1012,
+      "shares": 53,
+      "saves": 125,
+      "newFollowers": -934
     }
   ],
   "derived": {
